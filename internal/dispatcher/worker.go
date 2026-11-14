@@ -141,11 +141,11 @@ func computeBackoffWithJitter(base, maxBackoff time.Duration, attempt int) time.
 	if maxBackoff < base {
 		maxBackoff = base
 	}
-	Shift := attempt - 1
-	if Shift > 10 {
-		Shift = 10
+	shift := attempt - 1
+	if shift > 10 {
+		shift = 10
 	}
-	ceil := float64(base) * math.Pow(2, float64(Shift))
+	ceil := float64(base) * math.Pow(2, float64(shift))
 	if ceil > float64(maxBackoff) {
 		ceil = float64(maxBackoff)
 	}

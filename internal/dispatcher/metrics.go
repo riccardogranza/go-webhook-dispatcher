@@ -16,15 +16,15 @@ const reservoirCapacity = 16384
 
 // Metrics tracks atomic counters and a bounded latency ring buffer for quantile calculation.
 type Metrics struct {
-	enqueued   atomic.Uint64
-	delivered  atomic.Uint64
-	retried    atomic.Uint64
-	dlqCount   atomic.Int64
-	dlqTotal   atomic.Uint64
-	replayed   atomic.Uint64
-	shedCount  atomic.Uint64
-	inFlight   atomic.Int64
-	startedAt  time.Time
+	enqueued  atomic.Uint64
+	delivered atomic.Uint64
+	retried   atomic.Uint64
+	dlqCount  atomic.Int64
+	dlqTotal  atomic.Uint64
+	replayed  atomic.Uint64
+	shedCount atomic.Uint64
+	inFlight  atomic.Int64
+	startedAt time.Time
 
 	mu         sync.Mutex
 	latencies  []float64 // stored in milliseconds
@@ -34,24 +34,24 @@ type Metrics struct {
 
 // MetricsSnapshot represents a point-in-time view of all engine telemetry.
 type MetricsSnapshot struct {
-	Enqueued        uint64  `json:"enqueued"`
-	Delivered       uint64  `json:"delivered"`
-	Retried         uint64  `json:"retried"`
-	DLQCount        int64   `json:"dlq_count"`
-	DLQTotal        uint64  `json:"dlq_total"`
-	Replayed        uint64  `json:"replayed"`
-	ShedCount       uint64  `json:"shed_count"`
-	InFlight        int64   `json:"in_flight"`
-	QueueDepth      int     `json:"queue_depth"`
-	QueueCapacity   int     `json:"queue_capacity"`
-	P50LatencyMs    float64 `json:"p50_latency_ms"`
-	P95LatencyMs    float64 `json:"p95_latency_ms"`
-	P99LatencyMs    float64 `json:"p99_latency_ms"`
-	PeakRSSBytes    int64   `json:"peak_rss_bytes"`
-	PeakRSSMB       float64 `json:"peak_rss_mb"`
-	HeapAllocMB     float64 `json:"heap_alloc_mb"`
-	Goroutines      int     `json:"goroutines"`
-	UptimeSeconds   float64 `json:"uptime_seconds"`
+	Enqueued      uint64  `json:"enqueued"`
+	Delivered     uint64  `json:"delivered"`
+	Retried       uint64  `json:"retried"`
+	DLQCount      int64   `json:"dlq_count"`
+	DLQTotal      uint64  `json:"dlq_total"`
+	Replayed      uint64  `json:"replayed"`
+	ShedCount     uint64  `json:"shed_count"`
+	InFlight      int64   `json:"in_flight"`
+	QueueDepth    int     `json:"queue_depth"`
+	QueueCapacity int     `json:"queue_capacity"`
+	P50LatencyMs  float64 `json:"p50_latency_ms"`
+	P95LatencyMs  float64 `json:"p95_latency_ms"`
+	P99LatencyMs  float64 `json:"p99_latency_ms"`
+	PeakRSSBytes  int64   `json:"peak_rss_bytes"`
+	PeakRSSMB     float64 `json:"peak_rss_mb"`
+	HeapAllocMB   float64 `json:"heap_alloc_mb"`
+	Goroutines    int     `json:"goroutines"`
+	UptimeSeconds float64 `json:"uptime_seconds"`
 }
 
 // NewMetrics initializes a new telemetry collector.

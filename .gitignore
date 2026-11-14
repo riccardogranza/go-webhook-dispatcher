@@ -1,0 +1,26 @@
+# Compiled binaries
+/bin/
+/dispatcher
+/loadgen
+*.exe
+*.out
+*.test
+
+# SQLite databases and WAL/SHM journals
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+
+# Environment & OS artifacts
+.env
+.env.local
+.env.*
+!.env.example
+.DS_Store
+node_modules/
+.next/
+coverage.txt
